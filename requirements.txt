@@ -7,4 +7,6 @@ pydantic>=1.10
 sqlglot>=16.0
 python-dotenv>=1.0
 psycopg2-binary
+groq
 matplotlib
+supabase
