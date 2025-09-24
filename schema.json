@@ -1,0 +1,22 @@
+{
+  "tables": {
+    "re_postsales": [
+      "customer_id",
+      "name",
+      "email",
+      "phone",
+      "property_id",
+      "region",
+      "property_type",
+      "purchase_date",
+      "maintenance_due",
+      "payment_status",
+      "maintenance_requests",
+      "satisfaction_score",
+      "utilities_consumption",
+      "referral_source",
+      "warranty_claims",
+      "insurance_status"
+    ]
+  }
+}

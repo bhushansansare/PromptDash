@@ -1,0 +1,20 @@
+[
+  {
+    "nl": "Top 10 regions by number of maintenance requests in the last 12 months",
+    "json": {
+      "sql": "SELECT region, SUM(maintenance_requests) as requests FROM re_postsales WHERE purchase_date >= :start_date GROUP BY region ORDER BY requests DESC LIMIT 100",
+      "params": {"start_date": "2024-09-01"},
+      "visualization": {"type": "bar", "x": "region", "y": "requests", "limit": 10, "title": "Top 10 regions by maintenance requests (12 months)"},
+      "explanation": "Sums maintenance_requests by region for entries after start_date and shows top regions."
+    }
+  },
+  {
+    "nl": "Average satisfaction score by property type for properties with more than 2 maintenance requests",
+    "json": {
+      "sql": "SELECT property_type, AVG(satisfaction_score) as avg_satisfaction FROM re_postsales WHERE maintenance_requests > :min_requests GROUP BY property_type ORDER BY avg_satisfaction DESC",
+      "params": {"min_requests": 2},
+      "visualization": {"type": "bar", "x": "property_type", "y": "avg_satisfaction", "limit": 20, "title": "Avg satisfaction by property type (maintenance>2)"},
+      "explanation": "Computes average satisfaction_score grouped by property_type for rows with maintenance_requests > min_requests."
+    }
+  }
+]
