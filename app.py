@@ -11,9 +11,9 @@ from groq import Groq
 # -------------------
 load_dotenv()
 
-SUPABASE_DB_URL = os.getenv("SUPABASE_DB_URL")
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
+SUPABASE_DB_URL = st.secrets.get("SUPABASE_DB_URL") or os.getenv("SUPABASE_DB_URL")
+GROQ_API_KEY = st.secrets.get("GROQ_API_KEY") or os.getenv("GROQ_API_KEY")
+GROQ_MODEL = st.secrets.get("GROQ_MODEL", "llama-3.3-70b-versatile") or os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
 
 if not SUPABASE_DB_URL or not GROQ_API_KEY:
     st.error("❌ Missing SUPABASE_DB_URL or GROQ_API_KEY in environment.")
@@ -165,3 +165,4 @@ if st.button("Run Query"):
 
     except Exception as e:
         st.error(f"❌ Error: {e}")
+
